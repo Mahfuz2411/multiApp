@@ -9,6 +9,8 @@ public class TextEditor extends JFrame implements ActionListener {
     private JFileChooser fileChooser;
 
     public TextEditor() {
+        Container c = getContentPane();
+        c.setBackground(Color.BLACK);
         setTitle("Text Editor");
         setSize(500, 500);
         setLocationRelativeTo(null);
@@ -30,16 +32,20 @@ public class TextEditor extends JFrame implements ActionListener {
         JMenuItem homeMenuItem = new JMenuItem("Home");
         JMenuItem openMenuItem = new JMenuItem("Open");
         JMenuItem saveMenuItem = new JMenuItem("Save");
+        JMenuItem exitMenuItem = new JMenuItem("Exit");
 
         // Add action listeners to menu items
         homeMenuItem.addActionListener(this);
         openMenuItem.addActionListener(this);
         saveMenuItem.addActionListener(this);
+        exitMenuItem.addActionListener(this);
+
 
         // Add file menu items to file menu
         fileMenu.add(homeMenuItem);
         fileMenu.add(openMenuItem);
         fileMenu.add(saveMenuItem);
+        fileMenu.add(exitMenuItem);
 
         // Add file menu to menu bar
         menuBar.add(fileMenu);
@@ -70,6 +76,8 @@ public class TextEditor extends JFrame implements ActionListener {
             openFile();
         } else if (command.equals("Save")) {
             saveFile();
+        } else if (command.equals("Exit")) {
+            System.exit(0);
         }
     }
 

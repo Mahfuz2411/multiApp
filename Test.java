@@ -14,48 +14,58 @@ public class Test extends JFrame implements ActionListener{
         setVisible(true);
         setLayout(null);
         setResizable(false);
-        getContentPane().setBackground(Color.CYAN);
+        getContentPane().setBackground(Color.gray);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         
 
-        demo = new JLabel();
+        demo = new JLabel("WELCOME", JLabel.CENTER);
         demo.setSize(500, 30);
         demo.setLocation(0, 0);
         demo.setOpaque(true);
-        demo.setBackground(Color.RED);
+        demo.setBackground(Color.DARK_GRAY);
+        demo.setForeground(Color.WHITE);
+        demo.setFont(new Font("Courier New", Font.BOLD, 25));
         add(demo);
         
         // ImageIcon ig = new ImageIcon("Back.jpg");
         // Image scaledImage = ig.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         // ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-        demoButton = new JLabel("Welcome");
-        demoButton.setSize(100, 25);
-        demoButton.setLocation(220, 2);
-        demo.add(demoButton);
+    
 
 
 
-
-        button1 = new JButton("Text Editor", null);
-        button1.setSize(120, 50);
-        button1.setLocation(190, 100);
+        button1 = new JButton("Text Editor");
+        button1.setOpaque(true);
+        button1.setBackground(Color.DARK_GRAY);
+        button1.setForeground(Color.WHITE);
+        button1.setSize(300, 60);
+        button1.setLocation(100, 100);
+        button1.setFont(new Font("Poppins", Font.BOLD, 20));
         add(button1);
 
-        button2 = new JButton("Unit Converter", null);
-        button2.setSize(120, 50);
-        button2.setLocation(190, 160);
+        button2 = new JButton("Unit Converter");
+        button2.setOpaque(true);
+        button2.setBackground(Color.DARK_GRAY);
+        button2.setForeground(Color.WHITE);
+        button2.setSize(300, 60);
+        button2.setLocation(100, 170);
+        button2.setFont(new Font("Poppins", Font.BOLD, 20));
         add(button2);
 
-        button3 = new JButton("Digital Clock", null);
-        button3.setSize(120, 50);
-        button3.setLocation(190, 220);
+        button3 = new JButton("Digital Clock");
+        button3.setOpaque(true);
+        button3.setBackground(Color.DARK_GRAY);
+        button3.setForeground(Color.WHITE);
+        button3.setSize(300, 60);
+        button3.setLocation(100, 240);
+        button3.setFont(new Font("Poppins", Font.BOLD, 20));
         add(button3);
 
-        button1.addActionListener(this);
-        button2.addActionListener(this);
-        button3.addActionListener(this);
+        button1.addActionListener(this);  //text
+        button2.addActionListener(this);  //Unit
+        button3.addActionListener(this);  //clock
     }
 
     public void actionPerformed(ActionEvent e) {

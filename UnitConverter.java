@@ -1,4 +1,4 @@
-// import java.awt.*;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -13,30 +13,76 @@ public class UnitConverter extends JFrame implements ActionListener{
 
     UnitConverter(){
         super("Unit Converter");
+        getContentPane().setBackground(Color.GRAY);
         setSize(500, 500);
         setLocationRelativeTo(null);
         setLayout(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+         // Create a menu bar
+         JMenuBar menuBar = new JMenuBar();
+
+         // Create a file menu (Image)
+         ImageIcon ig = new ImageIcon("Menu.jpg");
+         Image scaledImage = ig.getImage().getScaledInstance(20, 15, Image.SCALE_SMOOTH);
+         ImageIcon scaledIcon = new ImageIcon(scaledImage);
+         
+         JMenu fileMenu = new JMenu();
+         fileMenu.setIcon(scaledIcon);
+ 
+         // Create file menu items
+         JMenuItem homeMenuItem = new JMenuItem("Home");
+         JMenuItem exitMenuItem = new JMenuItem("Exit");
+ 
+         // Add action listeners to menu items
+         homeMenuItem.addActionListener( new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                SwingUtilities.invokeLater(() -> new Test());
+            }
+         });
+         exitMenuItem.addActionListener( new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+         });
+ 
+         // Add file menu items to file menu
+         fileMenu.add(homeMenuItem);
+         fileMenu.add(exitMenuItem);
+ 
+         // Add file menu to menu bar
+         menuBar.add(fileMenu);
+ 
+         // Set menu bar for the frame
+         setJMenuBar(menuBar);
         
         
 
-        fromLabel = new JLabel("From: ");
-        fromLabel.setSize(100, 25);
+        fromLabel = new JLabel("From: ", JLabel.CENTER);
+        fromLabel.setOpaque(true);
+        fromLabel.setBackground(Color.WHITE);
+        fromLabel.setSize(150, 25);
         fromLabel.setLocation(80, 80);
         add(fromLabel);
 
-        toLabel = new JLabel("To: ");
-        toLabel.setSize(100, 25);
+        toLabel = new JLabel("To: ", JLabel.CENTER);
+        toLabel.setOpaque(true);
+        toLabel.setBackground(Color.WHITE);
+        toLabel.setSize(150, 25);
         toLabel.setLocation(300, 80);
         add(toLabel);
 
         fromField = new JTextField(10);
-        fromField.setSize(100, 25);
+        fromField.setSize(150, 25);
         fromField.setLocation(80, 110);
         add(fromField);
 
         toField = new JLabel("Result: ");
+        toField.setOpaque(true);
+        toField.setBackground(Color.WHITE);
         toField.setSize(150, 25);
         toField.setLocation(300, 110);
         add(toField);
@@ -52,8 +98,8 @@ public class UnitConverter extends JFrame implements ActionListener{
         add(toCombo);
 
         button = new JButton("Convert");
-        button.setSize(100, 25);
-        button.setLocation(200, 170);
+        button.setSize(370, 25);
+        button.setLocation(80, 170);
         button.setHorizontalAlignment(JButton.CENTER);
         add(button);
 
@@ -61,6 +107,7 @@ public class UnitConverter extends JFrame implements ActionListener{
 
         setVisible(true);
     }
+    
 
     public void actionPerformed(ActionEvent e) {
         convert();
@@ -72,7 +119,7 @@ public class UnitConverter extends JFrame implements ActionListener{
         try {
             value = Double.parseDouble(fromField.getText());
         } catch(Exception e) {
-            // JOptionPane ob = new 
+            JOptionPane.showMessageDialog(super.getContentPane(), "Something went wrong", "Warnig Message", JOptionPane.WARNING_MESSAGE);
             //!----------------------------------need to change---------------------------
         }
         switch (fromUnit) {
