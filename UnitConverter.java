@@ -21,43 +21,47 @@ public class UnitConverter extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-         // Create a menu bar
-         JMenuBar menuBar = new JMenuBar();
+        // Create a menu bar
+        JMenuBar menuBar = new JMenuBar();
 
-         // Create a file menu (Image)
-         ImageIcon ig = new ImageIcon("Menu.jpg");
-         Image scaledImage = ig.getImage().getScaledInstance(20, 15, Image.SCALE_SMOOTH);
-         ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        // Create a file menu (Image)
+        ImageIcon ig = new ImageIcon("Images/menu-burger.png");
+        Image scaledImage = ig.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        //!Frame Icon (Image)
+        Image scaledImage2 = Toolkit.getDefaultToolkit().getImage("Images/exchange.png");
+        setIconImage(scaledImage2);
          
-         JMenu fileMenu = new JMenu();
-         fileMenu.setIcon(scaledIcon);
+        JMenu fileMenu = new JMenu();
+        fileMenu.setIcon(scaledIcon);
+
+        // Create file menu items
+        JMenuItem homeMenuItem = new JMenuItem("Home");
+        JMenuItem exitMenuItem = new JMenuItem("Exit");
  
-         // Create file menu items
-         JMenuItem homeMenuItem = new JMenuItem("Home");
-         JMenuItem exitMenuItem = new JMenuItem("Exit");
- 
-         // Add action listeners to menu items
-         homeMenuItem.addActionListener( new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                SwingUtilities.invokeLater(() -> new Test());
-            }
-         });
-         exitMenuItem.addActionListener( new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-         });
- 
-         // Add file menu items to file menu
-         fileMenu.add(homeMenuItem);
-         fileMenu.add(exitMenuItem);
- 
-         // Add file menu to menu bar
-         menuBar.add(fileMenu);
- 
-         // Set menu bar for the frame
-         setJMenuBar(menuBar);
+        // Add action listeners to menu items
+        homeMenuItem.addActionListener( new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            setVisible(false);
+            SwingUtilities.invokeLater(() -> new Home());
+        }
+        });
+        exitMenuItem.addActionListener( new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+        }
+        });
+
+        // Add file menu items to file menu
+        fileMenu.add(homeMenuItem);
+        fileMenu.add(exitMenuItem);
+
+        // Add file menu to menu bar
+        menuBar.add(fileMenu);
+
+        // Set menu bar for the frame
+        setJMenuBar(menuBar);
         
         
 
@@ -120,7 +124,6 @@ public class UnitConverter extends JFrame implements ActionListener{
             value = Double.parseDouble(fromField.getText());
         } catch(Exception e) {
             JOptionPane.showMessageDialog(super.getContentPane(), "Something went wrong", "Warnig Message", JOptionPane.WARNING_MESSAGE);
-            //!----------------------------------need to change---------------------------
         }
         switch (fromUnit) {
             case "Atomic Mass Unit":

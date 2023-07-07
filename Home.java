@@ -3,11 +3,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 
-public class Test extends JFrame implements ActionListener{
+public class Home extends JFrame implements ActionListener{
     JButton button1, button2, button3;
     JLabel demo, text, demoButton;
     int count = 0;
-    Test(){
+    Home(){
         setTitle("Welcome");
         setSize(500, 500);
         setLocationRelativeTo(null);
@@ -28,11 +28,11 @@ public class Test extends JFrame implements ActionListener{
         demo.setFont(new Font("Courier New", Font.BOLD, 25));
         add(demo);
         
-        // ImageIcon ig = new ImageIcon("Back.jpg");
-        // Image scaledImage = ig.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-        // ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        //!Frame Icon (Image)
+        Image scaledImage2 = Toolkit.getDefaultToolkit().getImage("Images/home.png");
+        setIconImage(scaledImage2);
 
-    
+        setIconImage(scaledImage2);
 
 
 
@@ -89,6 +89,6 @@ public class Test extends JFrame implements ActionListener{
     }
 
     public static void main(String [] argc) {
-        SwingUtilities.invokeLater(() -> new Test());
+        SwingUtilities.invokeLater(() -> new Home());
     }
 }

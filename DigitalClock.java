@@ -28,9 +28,13 @@ public class DigitalClock extends JFrame implements ActionListener{
         JMenuBar menuBar = new JMenuBar();
 
         // Create a file menu (Image)
-        ImageIcon ig = new ImageIcon("Menu.jpg");
-        Image scaledImage = ig.getImage().getScaledInstance(20, 15, Image.SCALE_SMOOTH);
+        ImageIcon ig = new ImageIcon("Images/menu-burger.png");
+        Image scaledImage = ig.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        //!Frame Icon (Image)
+        Image scaledImage2 = Toolkit.getDefaultToolkit().getImage("Images/clock.png");
+        setIconImage(scaledImage2);
         
         JMenu fileMenu = new JMenu();
         fileMenu.setIcon(scaledIcon);
@@ -124,7 +128,7 @@ public class DigitalClock extends JFrame implements ActionListener{
         String command = e.getActionCommand();
         if(command.equals("Home")) {
             setVisible(false);
-            SwingUtilities.invokeLater(() -> new Test());
+            SwingUtilities.invokeLater(() -> new Home());
         } else if (command.equals("Exit")) {
             System.exit(0);
         }
