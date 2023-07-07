@@ -72,14 +72,14 @@ public class Home extends JFrame implements ActionListener{
         String cmd = e.getActionCommand();
         try {
             if(cmd.equals("Text Editor")){
-                setVisible(false);
+                dispose();
                 // SwingUtilities.invokeLater(() -> new TextEditor());
                 TextEditor ob = new TextEditor();
             } else if (cmd.equals("Unit Converter")) {
-                setVisible(false);
+                dispose();
                 UnitConverter ob = new UnitConverter();
             } else if (cmd.equals("Digital Clock")) {
-                setVisible(false);
+                dispose();
                 DigitalClock ob = new DigitalClock();
             }
         } catch (Exception ext) {

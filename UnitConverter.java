@@ -43,7 +43,7 @@ public class UnitConverter extends JFrame implements ActionListener{
         // Add action listeners to menu items
         homeMenuItem.addActionListener( new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            setVisible(false);
+            dispose();
             SwingUtilities.invokeLater(() -> new Home());
         }
         });

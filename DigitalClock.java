@@ -127,7 +127,7 @@ public class DigitalClock extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if(command.equals("Home")) {
-            setVisible(false);
+            dispose();
             SwingUtilities.invokeLater(() -> new Home());
         } else if (command.equals("Exit")) {
             System.exit(0);

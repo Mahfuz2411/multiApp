@@ -63,7 +63,7 @@ public class TextEditor extends JFrame implements ActionListener {
 
         // Create a text area
         textArea = new JTextArea();
-        textArea.setFont(new Font("Courier New", Font.PLAIN, 12));
+        textArea.setFont(new Font("Courier New", Font.PLAIN, 16));
 
         // Create a scroll pane and add the text area to it
         JScrollPane scrollPane = new JScrollPane(textArea);
@@ -78,7 +78,7 @@ public class TextEditor extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if(command.equals("Home")) {
-            setVisible(false);
+            dispose();
             SwingUtilities.invokeLater(() -> new Home());
         } else if (command.equals("Open")) {
             openFile();
