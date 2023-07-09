@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.io.*;
 
 public class Home extends JFrame implements ActionListener{
-    JButton button1, button2, button3;
-    JLabel demo, text, demoButton;
-    int count = 0;
+    private JButton button1, button2, button3;
+    private JLabel demo;
+    
     Home(){
         setTitle("Welcome");
         setSize(500, 500);

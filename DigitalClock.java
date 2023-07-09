@@ -10,9 +10,11 @@ import javax.swing.Timer;
 
 
 public class DigitalClock extends JFrame implements ActionListener{
-    JLabel topLabel, lowLabel;
-    JLabel timeLabel, dateLabel;
+    private JLabel topLabel, lowLabel;
+    private JLabel timeLabel, dateLabel;
     private JComboBox<String> timeZoneComboBox;
+    private JButton formatButton;
+    private boolean is24HourFormat=true, firstTime=true;
 
 
     DigitalClock() {
@@ -100,6 +102,21 @@ public class DigitalClock extends JFrame implements ActionListener{
             }
         });
 
+        //!--------------------------------Need to Change-------------------------------------------
+
+        formatButton = new JButton("24");
+        formatButton.setBounds(325, 0, 50, 25);
+        formatButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                is24HourFormat = !is24HourFormat;
+                if(is24HourFormat) formatButton.setText("24");
+                else formatButton.setText("12");
+                updateTime((String) timeZoneComboBox.getSelectedItem());
+            }
+        });
+        timeLabel.add(formatButton);
+
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,12 +130,19 @@ public class DigitalClock extends JFrame implements ActionListener{
     }
 
     private void updateTime(String timeZone) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        if(firstTime) {
+            timeZone = "Asia/Dhaka";
+            timeZoneComboBox.setSelectedItem(timeZone);
+            firstTime = !firstTime;
+        } //Etc/GMT+6
+        SimpleDateFormat timeFormat;
+        if(is24HourFormat) timeFormat = new SimpleDateFormat("HH:mm:ss");
+        else timeFormat = new SimpleDateFormat("hh:mm:ss a");
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");//yyyy-MM-dd
         timeFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
         dateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
 
-
+        
         Date date = new Date();
         timeLabel.setText(timeFormat.format(date));
         dateLabel.setText(dateFormat.format(date));

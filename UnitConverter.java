@@ -51,6 +51,7 @@ public class UnitConverter extends JFrame implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
         }
+        
         });
 
         // Add file menu items to file menu
